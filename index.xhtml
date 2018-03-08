@@ -7,14 +7,21 @@
 </head>
 <body>
 	<input type="file" id="csvFile"/>
-	<button type="button" onclick="loadFile()">Load File</button>
 
 	<p id="printJsonHere"></p>
 	
 	<script>
-		function loadFile() {
-			document.getElementById('printJsonHere').innerHTML = csvFileToJSON(document.getElementById('csvFile'));
+
+		function readSingleFile(evt) {
+	    	//Retrieve the first (and only!) File from the FileList object
+		    var f = evt.target.files[0]; 
+
+		    var result = csvFileToJSON(f);
+    		document.getElementById('printJsonHere').innerHTML = result;
 		}
+
+		document.getElementById('csvFile').addEventListener('change', readSingleFile, false);
+
 	</script>
 </body>
 </html>

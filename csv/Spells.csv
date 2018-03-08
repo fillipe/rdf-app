@@ -1,0 +1,4 @@
+name,cost,rng,aoe,pow,up,off,rule
+ARCANE BOLT,2,12,-,11,NO,YES,Magical bolts streak toward the target.
+AURA OF PROTECTION,2,SELF,CTRL,-,YES,NO,"While in the spell caster’s control area, friendly characters gain +2 ARM."
+FROSTBITE,2,SP8,-,12,NO,YES,Frostbite causes cold damage.

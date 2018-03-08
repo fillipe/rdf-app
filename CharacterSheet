@@ -1,0 +1,1927 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>IKRPG Sheet</title>
+        <meta name="description" content="Unofficial Iron Kingdoms Role Playing Game (IKRPG) Resources: IKRPG content index and character sheets.">
+        <link rel="stylesheet" href="static/stylesheets/index.css">
+        <link rel="stylesheet" href="static/stylesheets/content/datatables.css">
+
+        <!--script src="/static/javascripts/expandable.js"></script>
+        <script src="/static/javascripts/opaquable.js"></script>
+        <script src="/static/javascripts/resizable.js"></script-->
+
+        <script async="" src="http://www.google-analytics.com/analytics.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="static/javascripts/jquery-ui-1.11.4.min.js"></script>
+        <script type="text/javascript" src="http://cdn.datatables.net/1.10.0/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="http://cdn.datatables.net/fixedheader/2.1.1/js/dataTables.fixedHeader.min.js"></script>
+        <script type="text/javascript" src="static/javascripts/lz-string-1.3.3-min.js"></script>
+        <script type="text/javascript" src="static/javascripts/pouchdb-3.3.1.min.js"></script>
+        <!-- <script type="text/javascript">
+            var db = new PouchDB('ikrpg');
+        </script> -->
+
+        <script type="text/javascript" src="static/javascripts/index.js"></script>
+        <script type="text/javascript" src="static/javascripts/heroic.js"></script>
+        <script type="text/javascript" src="static/javascripts/sheet.js"></script>
+        <script type="text/javascript" src="static/javascripts/generator.js"></script>
+    </head>
+    <body style="background-image: url(&quot;static/images/bg-FMF.jpg&quot;); background-position: 50% -370px;">
+        <!-- <script type="text/javascript">
+            function changeBackground(imageName, topX) {
+                $("body").css('background-image', 'url('+imageName+')');
+                $("body").css('background-position', '50% '+topX+'px');
+                $("#head").css('background-image', 'url('+imageName+')');
+                $("#head").css('background-position', '50% '+(topX-66)+'px');
+                $("#foot > div.banner").css('background-image', 'url('+imageName+')');
+            }
+
+            function setBackground(imageName, topX) {
+                changeBackground(imageName, topX);
+
+                db.get("bg", function(error, bg) {
+                    if(!error) {
+                        bg.name = imageName;
+                        bg.topX = topX;
+                        db.put(bg);
+                    }
+                });
+            }
+
+            $(function() {
+                db.get("bg", function(error, bg) {
+                    if(error) {
+                        bg = {
+                            _id: "bg",
+                            name: "static/images/bg-FMF.jpg",
+                            topX: -370
+                        };
+                        db.put(bg);
+                    }
+                    changeBackground(bg.name, bg.topX);
+                });
+            });
+        </script> -->
+        <article itemscope="" itemtype="http://schema.org/Article">
+            <nav id="menu">
+                <ol>
+                    <li><a href="/"></a></li>
+                    <li><a href="mailto:philipp.wille@web.de"></a></li>
+                    <li><a href="https://github.com/ikrpg/ikrpg.github.io/wiki/How-do-I-Participate%3F"></a></li>
+                    <li><a href="https://github.com/ikrpg/ikrpg.github.io"></a></li>
+                    <li><a href="http://prose.io/#ikrpg/ikrpg.github.io/edit/master/_posts/0000-01-01-Character-Generator.html"></a></li>
+                    <li><a href="#" class="js-resizable"></a></li>
+                    <li><a href="#" class="js-opaquable"></a></li>
+                    <li><a href="#" class="js-expandable"></a></li>
+                </ol>
+            </nav>
+            <header id="head" style="background-image: url(&quot;static/images/bg-FMF.jpg&quot;); background-position: 50% -436px;">
+                <h1 itemprop="headline">Character Generator</h1>
+                <nav>
+                    <ol>
+                    
+                        <li><a href="#">Version 1</a></li>
+                    
+                    </ol>
+                </nav>
+            </header>
+            <section class="content" itemprop="articleBody"><link rel="stylesheet" href="static/stylesheets/content/generator.css">
+
+
+<p>
+    These are the (slightly modified) official Full Metal Fantasy and Unleashed character sheets
+    that can be downloaded at <a href="http://privateerpress.com/iron-kingdoms/downloads">privateerpress.com</a>.
+    We have modified them so you can fill, print, and save them in your browser!
+    After you saved them they are only visible to you.
+    We do not have access to your characters.
+    Only you can access them and only in the browser you saved them in.
+</p>
+<p>
+    <strong>Beware:</strong>
+    If you <strong>clear your browser cache</strong>, your character sheets <strong>will be lost</strong>!
+    Additionally, if you <strong>save</strong> a new character sheet <strong>under an existing hero name</strong>, the old sheet <strong>will be lost</strong>!
+</p>
+<p>
+    <em>Tip:</em>
+    Use your browser's print function to print your character sheet!
+</p>
+<p>
+    You can import/export character cards should you need them in a different browser, clear your browser cache or email them to a friend.
+    Exporting cards will give you a gibberish representation of your character that you can copy.
+    Pasting that gibberish into the import/export field and clicking to import the character will update your sheet.
+    Have fun using the character sheets!
+</p>
+
+
+<h2 style="font-weight:300;margin:1em 0 2em 0;">
+    | <a href="javascript:ikrpg.sheet.saveHero();">Save</a> |
+    <a href="#import-export">Import/Export Character</a> |
+</h2>
+
+<form id="import-export">
+    <textarea id="seed"></textarea>
+    <button id="generate-seed">Export seed for current cards</button>
+    <button id="update-seed">Fill out cards using current seed</button>
+</form>
+
+
+<div style="text-align:center;">
+    <table id="characters" class="hero">
+        <thead>
+            <tr>
+                <th>Hero Name</th>
+                <th>Archetype</th>
+                <th>Race</th>
+                <th>Careers</th>
+                <th>Load</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        
+    <tbody><tr><td>Eldjárn</td><td>Mighty</td><td>Trollkin</td><td>Warrior</td><td><a href="javascript:ikrpg.sheet.showCharacter('Eldjárn')">Load</a></td><td><a href="javascript:ikrpg.sheet.deleteCharacter('Eldjárn', '2-7d8e60c3dac9577000822f9fc126c507')"><strong>Delete</strong></a></td></tr><tr><td>Shido "Lobo de Sangue"</td><td>Mighty</td><td>Human</td><td>Skinwalker, Berserker</td><td><a href="javascript:ikrpg.sheet.showCharacter('Shido Lobo de Sangue')">Load</a></td><td><a href="javascript:ikrpg.sheet.deleteCharacter('Shido Lobo de Sangue', '8-b038802f617e406a757d6cf3577928ee')"><strong>Delete</strong></a></td></tr><tr><td>Skaldi</td><td>Mighty</td><td>Trollkin</td><td>Kriel Champion, Warrior</td><td><a href="javascript:ikrpg.sheet.showCharacter('Skaldi')">Load</a></td><td><a href="javascript:ikrpg.sheet.deleteCharacter('Skaldi', '1-2d213ce0d8b210e557ddd24d4c3ba9db')"><strong>Delete</strong></a></td></tr><tr><td>Vtr Snapshot</td><td>Skilled</td><td>Human</td><td>Ranger, Spy</td><td><a href="javascript:ikrpg.sheet.showCharacter('Vtr Snapshot')">Load</a></td><td><a href="javascript:ikrpg.sheet.deleteCharacter('Vtr Snapshot', '1-0b6479cb85c0c45126a4a9db02dd126c')"><strong>Delete</strong></a></td></tr></tbody></table>
+</div>
+
+
+<div style="margin-top:4em;">
+    <strong>Choose your character sheet design:</strong>
+    <ul style="list-style-type:disc;">
+        <li><a id="FMF-bg" href='javascript:$(".character-sheet.iku").removeClass("iku").addClass("fmf");'>Full Metal Fantasy</a> (slightly modified)</li>
+        <li><a id="IKU-bg" href='javascript:$(".character-sheet.fmf").removeClass("fmf").addClass("iku");'>Unleashed</a></li>
+    </ul>
+</div>
+
+
+<form id="character-sheet-page1" class="character-sheet fmf page1">
+    <input class="hero-name" title="Hero's Name" type="text">
+    <input id="sex" title="Sex" type="text">
+    <input id="definingcharacteristics" title="Defining Characteristics" type="text">
+    <input id="weight" title="Weight" type="text">
+    <input id="archetype" title="Archetype" type="text">
+    <!--div id="archetype-div">
+        <span id="archetype" contenteditable="true"></span>
+    </div-->
+    <input id="race" title="Race" type="text">
+    <input id="careers" title="Careers" type="text">
+    <input id="faith" title="Faith" type="text">
+    <input id="playername" title="Player Name" type="text">
+    <input id="height" title="Height" type="text">
+    <input id="level" title="Level" type="text">
+    <input id="xp" title="XP" type="text">
+    <!--div id="portrait"></div-->
+    <input id="phy" title="PHY" type="text" class="stat">
+    <input id="phymax" title="PHY max" type="text">
+    <input id="spd" title="SPD" type="text" class="stat" hidden="">
+    <input id="computed-spd" title="SPD" type="text" class="stat" value="0">
+    <input id="spdmax" title="SPD max" type="text">
+    <input id="str" title="STR" type="text" class="stat">
+    <input id="strmax" title="STR max" type="text">
+    <input id="agl" title="AGL" type="text" class="stat">
+    <input id="aglmax" title="AGL max" type="text">
+    <input id="prw" title="PRW" type="text" class="stat">
+    <input id="prwmax" title="PRW max" type="text">
+    <input id="poi" title="POI" type="text" class="stat">
+    <input id="poimax" title="POI max" type="text">
+    <input id="int" title="INT" type="text" class="stat">
+    <input id="intmax" title="INT max" type="text">
+    <input id="arc" title="ARC" type="text" class="stat">
+    <input id="arcmax" title="ARC max" type="text">
+    <input id="per" title="PER" type="text" class="stat">
+    <input id="permax" title="PER max" type="text">
+    <input id="wil" title="WIL" type="text">
+    <div id="rat1">
+        <input class="name ui-autocomplete-input" title="Name" type="text" autocomplete="off">
+        <input class="skill" title="Skill" type="hidden">
+        <input class="rng" title="RNG" type="text">
+        <input class="rat" title="RAT" type="text">
+        <input class="ratmod" title="RAT mod" type="hidden">
+        <input class="pow" title="POW" type="text">
+        <input class="notes" title="Notes" type="text">
+        <input class="ammo" title="Ammo" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-46" tabindex="0" style="display: none;"></ul></div>
+    <div id="rat2">
+        <input class="name ui-autocomplete-input" title="Name" type="text" autocomplete="off">
+        <input class="skill" title="Skill" type="hidden">
+        <input class="rng" title="RNG" type="text">
+        <input class="rat" title="RAT" type="text">
+        <input class="ratmod" title="RAT mod" type="hidden">
+        <input class="pow" title="POW" type="text">
+        <input class="notes" title="Notes" type="text">
+        <input class="ammo" title="Ammo" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-47" tabindex="0" style="display: none;"></ul></div>
+    <div id="mat1">
+        <input class="name ui-autocomplete-input" title="Name" type="text" autocomplete="off">
+        <input class="skill" title="Skill" type="hidden">
+        <input class="mat" title="MAT" type="text">
+        <input class="matmod" title="RAT mod" type="hidden">
+        <input class="pow" title="POW" type="hidden" value="0">
+        <input class="ps" title="PS" type="text">
+        <input class="notes" title="Notes" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-48" tabindex="0" style="display: none;"></ul></div>
+    <div id="mat2">
+        <input class="name ui-autocomplete-input" title="Name" type="text" autocomplete="off">
+        <input class="skill" title="Skill" type="hidden">
+        <input class="mat" title="MAT" type="text">
+        <input class="matmod" title="RAT mod" type="hidden">
+        <input class="pow" title="POW" type="hidden" value="0">
+        <input class="ps" title="PS" type="text">
+        <input class="notes" title="Notes" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-49" tabindex="0" style="display: none;"></ul></div>
+    <div id="mat3">
+        <input class="name" title="Name" type="text">
+        <input class="free" title="Free" type="text">
+        <input class="mat" title="MAT" type="text">
+        <input class="ps" title="POW" type="text">
+        <input class="notes" title="Notes" type="text">
+    </div>
+    <input id="defracialmodifier" title="DEF racial modifier" type="text">
+    <input id="defequipmentmodifiers" title="DEF equipment modifiers" type="text">
+    <input id="def" title="DEF" type="text">
+    <input id="armshieldmodifier" title="ARM shield modifier" type="text">
+    <input id="armarmormodifiers" title="ARM armor modifiers" type="text">
+    <input id="armothermodifiers" title="ARM other modifiers" type="text">
+    <input id="arm" title="ARM" type="text">
+    <input id="iniequipmentmodifiers" title="INI equipment modifiers" type="text">
+    <input id="iniadditionalmodifiers" title="INI additional modifiers" type="text">
+    <input id="ini" title="INI" type="text">
+    <input id="cmdcommandskill" title="CMD" type="text">
+    <input id="cmdabilitymodifier" title="CMD" type="text">
+    <input id="cmd" title="CMD" type="text">
+    <div id="s1" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="INT">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-9" tabindex="0" style="display: none;"></ul></div>
+    <div id="s2" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-10" tabindex="0" style="display: none;"></ul></div>
+    <div id="s3" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-11" tabindex="0" style="display: none;"></ul></div>
+    <div id="s4" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-12" tabindex="0" style="display: none;"></ul></div>
+    <div id="s5" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-13" tabindex="0" style="display: none;"></ul></div>
+    <div id="s6" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-14" tabindex="0" style="display: none;"></ul></div>
+    <div id="s7" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-15" tabindex="0" style="display: none;"></ul></div>
+    <div id="s8" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-16" tabindex="0" style="display: none;"></ul></div>
+    <div id="s9" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-17" tabindex="0" style="display: none;"></ul></div>
+    <div id="s10" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-18" tabindex="0" style="display: none;"></ul></div>
+    <div id="s11" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-19" tabindex="0" style="display: none;"></ul></div>
+    <div id="s12" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-20" tabindex="0" style="display: none;"></ul></div>
+    <div id="s13" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-21" tabindex="0" style="display: none;"></ul></div>
+    <div id="s14" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-22" tabindex="0" style="display: none;"></ul></div>
+    <div id="s15" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-23" tabindex="0" style="display: none;"></ul></div>
+    <div id="s16" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="stat" title="Stat" type="hidden">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-24" tabindex="0" style="display: none;"></ul></div>
+    <div id="s17" class="skill">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="stat" title="Stat" type="hidden" value="">
+        <input class="base" title="Base" type="text">
+        <input class="lvl" title="Level" type="text">
+        <input class="sum" title="Sum" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-25" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability1" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-26" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability2" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-27" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability3" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-28" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability4" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-29" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability5" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-30" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability6" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-31" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability7" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-32" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability8" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-33" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability9" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-34" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability10" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-35" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability11" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-36" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability12" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-37" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability13" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-38" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability14" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-39" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability15" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-40" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability16" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-41" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability17" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-42" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability18" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-43" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability19" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-44" tabindex="0" style="display: none;"></ul></div>
+    <div id="ability20" class="ability">
+        <input class="title ui-autocomplete-input" title="Title" type="text" autocomplete="off">
+        <input class="description" title="Description" type="text">
+        <input class="page" title="Page" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-45" tabindex="0" style="display: none;"></ul></div>
+    <input id="feats" title="Feats" type="text">
+</form>
+
+
+<form class="character-sheet fmf page2">
+    <div id="gear1" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear2" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear3" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear4" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear5" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear6" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear7" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear8" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear9" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear10" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear11" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear12" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear13" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear14" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear15" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear16" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear17" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear18" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="gear19" class="gear">
+        <input class="title" title="Title" type="text">
+        <input class="benefit" title="Benefit" type="text">
+    </div>
+    <div id="wornarmor1" class="wornarmor">
+        <input class="name ui-autocomplete-input" title="Name" type="text" autocomplete="off">
+        <input class="notes" title="Notes" type="text">
+        <input class="spd" title="SPD" type="text">
+        <input class="def" title="DEF" type="text">
+        <input class="arm" title="ARM" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-50" tabindex="0" style="display: none;"></ul></div>
+    <div id="wornarmor2" class="wornarmor">
+        <input class="name ui-autocomplete-input" title="Name" type="text" autocomplete="off">
+        <input class="notes" title="Notes" type="text">
+        <input class="spd" title="SPD" type="text">
+        <input class="def" title="DEF" type="text">
+        <input class="arm" title="ARM" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-51" tabindex="0" style="display: none;"></ul></div>
+    <div id="wornarmor3" class="wornarmor">
+        <input class="name ui-autocomplete-input" title="Name" type="text" autocomplete="off">
+        <input class="notes" title="Notes" type="text">
+        <input class="spd" title="SPD" type="text">
+        <input class="def" title="DEF" type="text">
+        <input class="arm" title="ARM" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-52" tabindex="0" style="display: none;"></ul></div>
+    <div id="wornarmor4" class="wornarmor">
+        <input class="name ui-autocomplete-input" title="Name" type="text" autocomplete="off">
+        <input class="notes" title="Notes" type="text">
+        <input class="spd" title="SPD" type="text">
+        <input class="def" title="DEF" type="text">
+        <input class="arm" title="ARM" type="text">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-53" tabindex="0" style="display: none;"></ul></div>
+    <div id="connection1" class="connection">
+        <input class="name" title="Name" type="text">
+        <input class="notes" title="Notes" type="text">
+        <input class="page" title="Page" type="text">
+    </div>
+    <div id="connection2" class="connection">
+        <input class="name" title="Name" type="text">
+        <input class="notes" title="Notes" type="text">
+        <input class="page" title="Page" type="text">
+    </div>
+    <div id="connection3" class="connection">
+        <input class="name" title="Name" type="text">
+        <input class="notes" title="Notes" type="text">
+        <input class="page" title="Page" type="text">
+    </div>
+    <div id="connection4" class="connection">
+        <input class="name" title="Name" type="text">
+        <input class="notes" title="Notes" type="text">
+        <input class="page" title="Page" type="text">
+    </div>
+    <input id="arcanetradition" title="Arcane Tradition" type="text">
+    <div id="spell1" class="spell">
+        <input type="text" title="Spell" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Cost" class="cost">
+        <input type="text" title="RNG" class="rng">
+        <input type="text" title="AOE" class="aoe">
+        <input type="text" title="POW" class="pow">
+        <input type="text" title="UP" class="up">
+        <input type="text" title="OFF" class="off">
+        <input type="text" title="Description" class="description">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: none;"></ul></div>
+    <div id="spell2" class="spell">
+        <input type="text" title="Spell" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Cost" class="cost">
+        <input type="text" title="RNG" class="rng">
+        <input type="text" title="AOE" class="aoe">
+        <input type="text" title="POW" class="pow">
+        <input type="text" title="UP" class="up">
+        <input type="text" title="OFF" class="off">
+        <input type="text" title="Description" class="description">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-2" tabindex="0" style="display: none;"></ul></div>
+    <div id="spell3" class="spell">
+        <input type="text" title="Spell" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Cost" class="cost">
+        <input type="text" title="RNG" class="rng">
+        <input type="text" title="AOE" class="aoe">
+        <input type="text" title="POW" class="pow">
+        <input type="text" title="UP" class="up">
+        <input type="text" title="OFF" class="off">
+        <input type="text" title="Description" class="description">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-3" tabindex="0" style="display: none;"></ul></div>
+    <div id="spell4" class="spell">
+        <input type="text" title="Spell" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Cost" class="cost">
+        <input type="text" title="RNG" class="rng">
+        <input type="text" title="AOE" class="aoe">
+        <input type="text" title="POW" class="pow">
+        <input type="text" title="UP" class="up">
+        <input type="text" title="OFF" class="off">
+        <input type="text" title="Description" class="description">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-4" tabindex="0" style="display: none;"></ul></div>
+    <div id="spell5" class="spell">
+        <input type="text" title="Spell" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Cost" class="cost">
+        <input type="text" title="RNG" class="rng">
+        <input type="text" title="AOE" class="aoe">
+        <input type="text" title="POW" class="pow">
+        <input type="text" title="UP" class="up">
+        <input type="text" title="OFF" class="off">
+        <input type="text" title="Description" class="description">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-5" tabindex="0" style="display: none;"></ul></div>
+    <div id="spell6" class="spell">
+        <input type="text" title="Spell" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Cost" class="cost">
+        <input type="text" title="RNG" class="rng">
+        <input type="text" title="AOE" class="aoe">
+        <input type="text" title="POW" class="pow">
+        <input type="text" title="UP" class="up">
+        <input type="text" title="OFF" class="off">
+        <input type="text" title="Description" class="description">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-6" tabindex="0" style="display: none;"></ul></div>
+    <div id="spell7" class="spell">
+        <input type="text" title="Spell" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Cost" class="cost">
+        <input type="text" title="RNG" class="rng">
+        <input type="text" title="AOE" class="aoe">
+        <input type="text" title="POW" class="pow">
+        <input type="text" title="UP" class="up">
+        <input type="text" title="OFF" class="off">
+        <input type="text" title="Description" class="description">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-7" tabindex="0" style="display: none;"></ul></div>
+    <div id="spell8" class="spell">
+        <input type="text" title="Spell" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Cost" class="cost">
+        <input type="text" title="RNG" class="rng">
+        <input type="text" title="AOE" class="aoe">
+        <input type="text" title="POW" class="pow">
+        <input type="text" title="UP" class="up">
+        <input type="text" title="OFF" class="off">
+        <input type="text" title="Description" class="description">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-8" tabindex="0" style="display: none;"></ul></div>
+    <div id="mechanika1" class="mechanika">
+        <input type="text" title="Housing" class="housing">
+        <input type="text" title="Runeplate" class="runeplate ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Capacitor" class="capacitor ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Notes" class="notes">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-58" tabindex="0" style="display: none;"></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-67" tabindex="0" style="display: none;"></ul></div>
+    <div id="mechanika2" class="mechanika">
+        <input type="text" title="Housing" class="housing">
+        <input type="text" title="Runeplate" class="runeplate ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Capacitor" class="capacitor ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Notes" class="notes">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-59" tabindex="0" style="display: none;"></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-68" tabindex="0" style="display: none;"></ul></div>
+    <div id="mechanika3" class="mechanika">
+        <input type="text" title="Housing" class="housing">
+        <input type="text" title="Runeplate" class="runeplate ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Capacitor" class="capacitor ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Notes" class="notes">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-60" tabindex="0" style="display: none;"></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-69" tabindex="0" style="display: none;"></ul></div>
+    <div id="mechanika4" class="mechanika">
+        <input type="text" title="Housing" class="housing">
+        <input type="text" title="Runeplate" class="runeplate ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Capacitor" class="capacitor ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Notes" class="notes">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-61" tabindex="0" style="display: none;"></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-70" tabindex="0" style="display: none;"></ul></div>
+    <div id="mechanika5" class="mechanika">
+        <input type="text" title="Housing" class="housing">
+        <input type="text" title="Runeplate" class="runeplate ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Capacitor" class="capacitor ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Notes" class="notes">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-62" tabindex="0" style="display: none;"></ul><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-71" tabindex="0" style="display: none;"></ul></div>
+    <div id="runeplate1" class="runeplate">
+        <input type="text" title="Rune Plate" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Benefit" class="benefit">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-63" tabindex="0" style="display: none;"></ul></div>
+    <div id="runeplate2" class="runeplate">
+        <input type="text" title="Rune Plate" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Benefit" class="benefit">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-64" tabindex="0" style="display: none;"></ul></div>
+    <div id="runeplate3" class="runeplate">
+        <input type="text" title="Rune Plate" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Benefit" class="benefit">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-65" tabindex="0" style="display: none;"></ul></div>
+    <div id="runeplate4" class="runeplate">
+        <input type="text" title="Rune Plate" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Benefit" class="benefit">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-66" tabindex="0" style="display: none;"></ul></div>
+    <div id="capacitor1" class="capacitor">
+        <input type="text" title="Capacitor" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Charges" class="charges">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-54" tabindex="0" style="display: none;"></ul></div>
+    <div id="capacitor2" class="capacitor">
+        <input type="text" title="Capacitor" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Charges" class="charges">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-55" tabindex="0" style="display: none;"></ul></div>
+    <div id="capacitor3" class="capacitor">
+        <input type="text" title="Capacitor" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Charges" class="charges">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-56" tabindex="0" style="display: none;"></ul></div>
+    <div id="capacitor4" class="capacitor">
+        <input type="text" title="Capacitor" class="title ui-autocomplete-input" autocomplete="off">
+        <input type="text" title="Charges" class="charges">
+    <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-57" tabindex="0" style="display: none;"></ul></div>
+    <div id="note1" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note2" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note3" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note4" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note5" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note6" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note7" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note8" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note9" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note10" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note11" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <div id="note12" class="note">
+        <input type="text" title="Text" class="text">
+    </div>
+    <input type="text" title="Permanent Injury" id="permanentinjury1">
+    <input type="text" title="Permanent Injury" id="permanentinjury2">
+    <input type="text" title="Permanent Injury" id="permanentinjury3">
+    <input type="text" title="Spoken Language" id="spokenlanguage1">
+    <input type="text" title="Spoken Language" id="spokenlanguage2">
+    <input type="text" title="Spoken Language" id="spokenlanguage3">
+    <input type="text" title="Religious Belief" id="religiousbelief1">
+    <input type="text" title="Religious Belief" id="religiousbelief2">
+    <input type="text" title="Religious Belief" id="religiousbelief3">
+    <input type="text" title="Gold" id="gold">
+</form>
+
+
+
+<h2>Character Generator <!--span style="font-size:13px;vertical-align:super;color:#d24d33;">BETA</span--></h2>
+<p>
+    We always loved creating diverse characters for role playing games.
+    And (maybe much like yours?) the vast of our characters remain concepts and are never played.
+    So when you are creating lots and lots of characters you need tools that make your life easier.
+    This character generator is built to support you in exactly that!
+</p>
+<p>
+    It allows you to fill out parts of the character sheet automatically instead of filling all values yourself (e.g. it will autofill weapons and spells) which saves you time.
+    However, it is not meant to be a full blown character manager that would help you spending XP after character creation.
+    Here it differs from the Excel Generator also available for IKRPG.
+    This is not an oversight but a design choice which makes it much easier to maintain and extend the generator.
+    Here is a list of what the character generator does for you:
+</p>
+<p>
+    </p><ul>
+        <li>It fills all values for the chosen races, castes, archetypes, careers, and adventuring companies</li>
+        <li>It computes DEF, ARM, Initiative, Command Range, Willpower, MAT, P+S, RAT, and Skill totals</li>
+        <li>It gives you dropdown menus for ranged/melee weapons, skills, abilities/benefits, worn armor, spells, rune plates, and capacitors (we use the names from our index, so a Tharn Axe is an "Axe, Tharn")</li>
+        <li>It includes all races, castes, archetypes, careers, career options, and adventuring companies from the index</li>
+    </ul>
+<p></p>
+<p>
+    Have fun creating your IKRPG characters!
+</p>
+<p>
+    <strong>Beware:</strong>
+    If you <strong>generate a character</strong>, the entries in your <strong>character sheet will be replaced</strong>!
+</p>
+
+
+<h3>
+    Race:
+    <select id="race-select">
+        <option value="empty"></option>
+    
+<option value="Blighted Ogrun">Blighted Ogrun</option>
+<option value="Bog Trog">Bog Trog</option>
+<option value="Bogrin">Bogrin</option>
+<option value="Croak">Croak</option>
+<option value="Dwarf">Dwarf</option>
+<option value="Efaarit">Efaarit</option>
+<option value="Farrow">Farrow</option>
+<option value="Gatorman">Gatorman</option>
+<option value="Gobber">Gobber</option>
+<option value="Human (FMF)">Human (FMF)</option>
+<option value="Human (IKU)">Human (IKU)</option>
+<option value="Iosan">Iosan</option>
+<option value="Nyss (FMF)">Nyss (FMF)</option>
+<option value="Nyss (IKU)">Nyss (IKU)</option>
+<option value="Ogrun (FMF)">Ogrun (FMF)</option>
+<option value="Ogrun (IKU)">Ogrun (IKU)</option>
+<option value="Pygmy Troll">Pygmy Troll</option>
+<option value="Satyxis">Satyxis</option>
+<option value="Skorne">Skorne</option>
+<option value="Strider">Strider</option>
+<option value="Swamp Gobber">Swamp Gobber</option>
+<option value="Tharn">Tharn</option>
+<option value="Trollkin">Trollkin</option></select>
+</h3>
+
+<table class="hero character-generator-table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody id="race-data" class="character-generator-data">
+        
+    </tbody>
+</table>
+
+
+<h3>
+    Caste:
+    <select id="caste-select">
+        <option value="empty"></option>
+    
+<option value="Extoller">Extoller</option>
+<option value="Outcast">Outcast</option>
+<option value="Paingiver">Paingiver</option>
+<option value="Slave">Slave</option>
+<option value="Warrior">Warrior</option>
+<option value="Worker">Worker</option></select>
+</h3>
+
+<table class="veteran character-generator-table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody id="caste-data" class="character-generator-data">
+        
+    </tbody>
+</table>
+
+
+<h3>
+    Archetype:
+    <select id="archetype-select">
+        <option value="empty"></option>
+    
+<option value="Cunning">Cunning</option>
+<option value="Gifted (FMF)">Gifted (FMF)</option>
+<option value="Gifted (IKU)">Gifted (IKU)</option>
+<option value="Intellectual">Intellectual</option>
+<option value="Mighty">Mighty</option>
+<option value="Skilled">Skilled</option></select>
+</h3>
+
+<table class="epic character-generator-table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody id="archetype-data" class="character-generator-data">
+        
+    </tbody>
+</table>
+
+
+<h3>
+    Career 1:
+    <select id="career1-select">
+        <option value="empty"></option>
+    
+<optgroup label="Core Rules:">
+<option value="Alchemist">Alchemist</option>
+<option value="Arcane Mechanik">Arcane Mechanik</option>
+<option value="Arcanist">Arcanist</option>
+<option value="Aristocrat">Aristocrat</option>
+<option value="Bounty Hunter">Bounty Hunter</option>
+<option value="Cutthroat">Cutthroat</option>
+<option value="Duelist">Duelist</option>
+<option value="Explorer">Explorer</option>
+<option value="Fell Caller">Fell Caller</option>
+<option value="Field Mechanik">Field Mechanik</option>
+<option value="Gun Mage">Gun Mage</option>
+<option value="Highwayman">Highwayman</option>
+<option value="Investigator">Investigator</option>
+<option value="Iron Fang">Iron Fang</option>
+<option value="Knight">Knight</option>
+<option value="Mage Hunter">Mage Hunter</option>
+<option value="Man-at-Arms">Man-at-Arms</option>
+<option value="Military Officer">Military Officer</option>
+<option value="Pirate">Pirate</option>
+<option value="Pistoleer">Pistoleer</option>
+<option value="Priest of Menoth">Priest of Menoth</option>
+<option value="Priest of Morrow">Priest of Morrow</option>
+<option value="Ranger">Ranger</option>
+<option value="Rifleman">Rifleman</option>
+<option value="Soldier">Soldier</option>
+<option value="Sorcerer (Fire)">Sorcerer (Fire)</option>
+<option value="Sorcerer (Ice)">Sorcerer (Ice)</option>
+<option value="Sorcerer (Stone)">Sorcerer (Stone)</option>
+<option value="Sorcerer (Storm)">Sorcerer (Storm)</option>
+<option value="Spy">Spy</option>
+<option value="Stormblade">Stormblade</option>
+<option value="Thief">Thief</option>
+<option value="Trencher">Trencher</option>
+<option value="Warcaster">Warcaster</option>
+</optgroup>
+<optgroup label="Urban Adventure:">
+<option value="Guttersnipe">Guttersnipe</option>
+<option value="Labor Korune">Labor Korune</option>
+<option value="Pugilist">Pugilist</option>
+<option value="Searforge Trader">Searforge Trader</option>
+<option value="Seeker">Seeker</option>
+<option value="Thamarite Advocate">Thamarite Advocate</option>
+<option value="Urban Nomad">Urban Nomad</option>
+</optgroup>
+<optgroup label="Kings, Nations, and Gods:">
+<option value="Allegiant">Allegiant</option>
+<option value="Arcane Tempest Gun Mage">Arcane Tempest Gun Mage</option>
+<option value="Artillerist">Artillerist</option>
+<option value="Assault Kommando">Assault Kommando</option>
+<option value="Crucible Guard">Crucible Guard</option>
+<option value="Cygnaran Warcaster">Cygnaran Warcaster</option>
+<option value="Doom Reaver">Doom Reaver</option>
+<option value="Exemplar">Exemplar</option>
+<option value="Exemplar Errant">Exemplar Errant</option>
+<option value="Exemplar Venger">Exemplar Venger</option>
+<option value="Greylord">Greylord</option>
+<option value="Gun Mage of the Amethyst Rose">Gun Mage of the Amethyst Rose</option>
+<option value="Horseman">Horseman</option>
+<option value="Illuminated Arcanist">Illuminated Arcanist</option>
+<option value="Iron Fang Uhlan">Iron Fang Uhlan</option>
+<option value="Khadoran Warcaster">Khadoran Warcaster</option>
+<option value="Llaelese Warcaster">Llaelese Warcaster</option>
+<option value="Man-O-War">Man-O-War</option>
+<option value="Man-O-War Drakhun">Man-O-War Drakhun</option>
+<option value="Marine">Marine</option>
+<option value="Maritime Order of the Trident Arcanist">Maritime Order of the Trident Arcanist</option>
+<option value="Ordic Warcaster">Ordic Warcaster</option>
+<option value="Paladin">Paladin</option>
+<option value="Protectorate Warcaster">Protectorate Warcaster</option>
+<option value="Reclaimer">Reclaimer</option>
+<option value="Scrutator">Scrutator</option>
+<option value="Storm Lance">Storm Lance</option>
+<option value="Stormguard">Stormguard</option>
+<option value="Stormsmith">Stormsmith</option>
+<option value="Trencher Commando">Trencher Commando</option>
+<option value="Vassal of Menoth">Vassal of Menoth</option>
+</optgroup>
+<optgroup label="Unleashed Core Rules:">
+<option value="Archer">Archer</option>
+<option value="Blackclad">Blackclad</option>
+<option value="Bloodtracker">Bloodtracker</option>
+<option value="Bloodweaver">Bloodweaver</option>
+<option value="Bokor">Bokor</option>
+<option value="Bone Grinder">Bone Grinder</option>
+<option value="Brigand">Brigand</option>
+<option value="Bushwhacker">Bushwhacker</option>
+<option value="Chieftain">Chieftain</option>
+<option value="Fell Caller">Fell Caller</option>
+<option value="Fennblade">Fennblade</option>
+<option value="Kriel Champion">Kriel Champion</option>
+<option value="Long Rider">Long Rider</option>
+<option value="Mist Speaker">Mist Speaker</option>
+<option value="Monster Hunter">Monster Hunter</option>
+<option value="Priest of Nyssor">Priest of Nyssor</option>
+<option value="Raptor">Raptor</option>
+<option value="Ravager">Ravager</option>
+<option value="Ryssovass">Ryssovass</option>
+<option value="Scout">Scout</option>
+<option value="Shaman (Devourer Wurm)">Shaman (Devourer Wurm)</option>
+<option value="Shaman (Dhunia)">Shaman (Dhunia)</option>
+<option value="Slaughterhouser">Slaughterhouser</option>
+<option value="Sorcerer (Fire)">Sorcerer (Fire)</option>
+<option value="Sorcerer (Ice)">Sorcerer (Ice)</option>
+<option value="Sorcerer (Stone)">Sorcerer (Stone)</option>
+<option value="Sorcerer (Storm)">Sorcerer (Storm)</option>
+<option value="Warlock, Circle">Warlock, Circle</option>
+<option value="Warlock, Farrow">Warlock, Farrow</option>
+<option value="Warlock, Swamp">Warlock, Swamp</option>
+<option value="Warlock, Trollkin">Warlock, Trollkin</option>
+<option value="Warrior">Warrior</option>
+<option value="Wolf Rider">Wolf Rider</option>
+<option value="Wolf of Orboros">Wolf of Orboros</option>
+</optgroup>
+<optgroup label="Wild Adventure:">
+<option value="Berserker">Berserker</option>
+<option value="Blackclad Mist Rider">Blackclad Mist Rider</option>
+<option value="Bloodweaver Night Witch">Bloodweaver Night Witch</option>
+<option value="Croak Conjoined Twin">Croak Conjoined Twin</option>
+<option value="Dhunian Paragon (Fall)">Dhunian Paragon (Fall)</option>
+<option value="Dhunian Paragon (Spring)">Dhunian Paragon (Spring)</option>
+<option value="Dhunian Paragon (Summer)">Dhunian Paragon (Summer)</option>
+<option value="Dhunian Paragon (Winter)">Dhunian Paragon (Winter)</option>
+<option value="Guide">Guide</option>
+<option value="Huntsman">Huntsman</option>
+<option value="Pyg Burrower">Pyg Burrower</option>
+<option value="Skinwalker">Skinwalker</option>
+<option value="Swamp Gobber Raider">Swamp Gobber Raider</option>
+<option value="Tharn Blood Pack">Tharn Blood Pack</option>
+<option value="Tinker">Tinker</option>
+<option value="Trapper">Trapper</option>
+</optgroup>
+<optgroup label="Skorne Empire:">
+<option value="Ascetic">Ascetic</option>
+<option value="Beast Handler">Beast Handler</option>
+<option value="Bloodrunner">Bloodrunner</option>
+<option value="Cataphract">Cataphract</option>
+<option value="Chirurgeon">Chirurgeon</option>
+<option value="Chymist">Chymist</option>
+<option value="Extoller">Extoller</option>
+<option value="Ferox Rider">Ferox Rider</option>
+<option value="Mortitheurge">Mortitheurge</option>
+<option value="Nihilator">Nihilator</option>
+<option value="Praetorian">Praetorian</option>
+<option value="Tormentor">Tormentor</option>
+<option value="Tyrant">Tyrant</option>
+<option value="Venator">Venator</option>
+<option value="Warlock: Skorne">Warlock: Skorne</option>
+</optgroup>
+<optgroup label="Other Publications:">
+<option value="Angler">Angler</option>
+<option value="Blightblade">Blightblade</option>
+<option value="Blighted Sorcerer">Blighted Sorcerer</option>
+<option value="Blighted Swordsman">Blighted Swordsman</option>
+<option value="Buccaneer">Buccaneer</option>
+<option value="Deathstalker">Deathstalker</option>
+<option value="Doom Reaver">Doom Reaver</option>
+<option value="Errant Marine">Errant Marine</option>
+<option value="Exiled Noble">Exiled Noble</option>
+<option value="Flame Bringers">Flame Bringers</option>
+<option value="Greylord Outrider">Greylord Outrider</option>
+<option value="Hex Hunter">Hex Hunter</option>
+<option value="Ice Master">Ice Master</option>
+<option value="Idrian Corsair">Idrian Corsair</option>
+<option value="Ironhead">Ironhead</option>
+<option value="Long Rider">Long Rider</option>
+<option value="Merchant Trader">Merchant Trader</option>
+<option value="Naval Officer">Naval Officer</option>
+<option value="Naval Officer">Naval Officer</option>
+<option value="Nomad">Nomad</option>
+<option value="Press Ganger">Press Ganger</option>
+<option value="Priest of Cyriss">Priest of Cyriss</option>
+<option value="Priest of Cyriss">Priest of Cyriss</option>
+<option value="Raider">Raider</option>
+<option value="Resistance Saboteur">Resistance Saboteur</option>
+<option value="Resistance Sleeper Agent">Resistance Sleeper Agent</option>
+<option value="Rhulic Field Mechanik">Rhulic Field Mechanik</option>
+<option value="Rhulic Warcaster">Rhulic Warcaster</option>
+<option value="Sawbones">Sawbones</option>
+<option value="Sea Sorcerer (Fire)">Sea Sorcerer (Fire)</option>
+<option value="Sea Sorcerer (Ice)">Sea Sorcerer (Ice)</option>
+<option value="Sea Sorcerer (Stone)">Sea Sorcerer (Stone)</option>
+<option value="Sea Sorcerer (Storm)">Sea Sorcerer (Storm)</option>
+<option value="Shepherd">Shepherd</option>
+<option value="Smuggler">Smuggler</option>
+<option value="Tempest Blazer">Tempest Blazer</option>
+<option value="Treasure Hunter">Treasure Hunter</option>
+<option value="Vagabond">Vagabond</option>
+<option value="Warcaster, Cyriss">Warcaster, Cyriss</option>
+<option value="Warlock, Legion">Warlock, Legion</option>
+<option value="Warmonger">Warmonger</option>
+<option value="Watch Inspector">Watch Inspector</option>
+</optgroup></select>
+</h3>
+
+<table class="hero character-generator-table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody id="career1-data" class="character-generator-data">
+        
+    </tbody>
+</table>
+
+
+<h3>
+    Career 2:
+    <select id="career2-select">
+        <option value="empty"></option>
+    
+<optgroup label="Core Rules:">
+<option value="Alchemist">Alchemist</option>
+<option value="Arcane Mechanik">Arcane Mechanik</option>
+<option value="Arcanist">Arcanist</option>
+<option value="Aristocrat">Aristocrat</option>
+<option value="Bounty Hunter">Bounty Hunter</option>
+<option value="Cutthroat">Cutthroat</option>
+<option value="Duelist">Duelist</option>
+<option value="Explorer">Explorer</option>
+<option value="Fell Caller">Fell Caller</option>
+<option value="Field Mechanik">Field Mechanik</option>
+<option value="Gun Mage">Gun Mage</option>
+<option value="Highwayman">Highwayman</option>
+<option value="Investigator">Investigator</option>
+<option value="Iron Fang">Iron Fang</option>
+<option value="Knight">Knight</option>
+<option value="Mage Hunter">Mage Hunter</option>
+<option value="Man-at-Arms">Man-at-Arms</option>
+<option value="Military Officer">Military Officer</option>
+<option value="Pirate">Pirate</option>
+<option value="Pistoleer">Pistoleer</option>
+<option value="Priest of Menoth">Priest of Menoth</option>
+<option value="Priest of Morrow">Priest of Morrow</option>
+<option value="Ranger">Ranger</option>
+<option value="Rifleman">Rifleman</option>
+<option value="Soldier">Soldier</option>
+<option value="Sorcerer (Fire)">Sorcerer (Fire)</option>
+<option value="Sorcerer (Ice)">Sorcerer (Ice)</option>
+<option value="Sorcerer (Stone)">Sorcerer (Stone)</option>
+<option value="Sorcerer (Storm)">Sorcerer (Storm)</option>
+<option value="Spy">Spy</option>
+<option value="Stormblade">Stormblade</option>
+<option value="Thief">Thief</option>
+<option value="Trencher">Trencher</option>
+<option value="Warcaster">Warcaster</option>
+</optgroup>
+<optgroup label="Urban Adventure:">
+<option value="Guttersnipe">Guttersnipe</option>
+<option value="Labor Korune">Labor Korune</option>
+<option value="Pugilist">Pugilist</option>
+<option value="Searforge Trader">Searforge Trader</option>
+<option value="Seeker">Seeker</option>
+<option value="Thamarite Advocate">Thamarite Advocate</option>
+<option value="Urban Nomad">Urban Nomad</option>
+</optgroup>
+<optgroup label="Kings, Nations, and Gods:">
+<option value="Allegiant">Allegiant</option>
+<option value="Arcane Tempest Gun Mage">Arcane Tempest Gun Mage</option>
+<option value="Artillerist">Artillerist</option>
+<option value="Assault Kommando">Assault Kommando</option>
+<option value="Crucible Guard">Crucible Guard</option>
+<option value="Cygnaran Warcaster">Cygnaran Warcaster</option>
+<option value="Doom Reaver">Doom Reaver</option>
+<option value="Exemplar">Exemplar</option>
+<option value="Exemplar Errant">Exemplar Errant</option>
+<option value="Exemplar Venger">Exemplar Venger</option>
+<option value="Greylord">Greylord</option>
+<option value="Gun Mage of the Amethyst Rose">Gun Mage of the Amethyst Rose</option>
+<option value="Horseman">Horseman</option>
+<option value="Illuminated Arcanist">Illuminated Arcanist</option>
+<option value="Iron Fang Uhlan">Iron Fang Uhlan</option>
+<option value="Khadoran Warcaster">Khadoran Warcaster</option>
+<option value="Llaelese Warcaster">Llaelese Warcaster</option>
+<option value="Man-O-War">Man-O-War</option>
+<option value="Man-O-War Drakhun">Man-O-War Drakhun</option>
+<option value="Marine">Marine</option>
+<option value="Maritime Order of the Trident Arcanist">Maritime Order of the Trident Arcanist</option>
+<option value="Ordic Warcaster">Ordic Warcaster</option>
+<option value="Paladin">Paladin</option>
+<option value="Protectorate Warcaster">Protectorate Warcaster</option>
+<option value="Reclaimer">Reclaimer</option>
+<option value="Scrutator">Scrutator</option>
+<option value="Storm Lance">Storm Lance</option>
+<option value="Stormguard">Stormguard</option>
+<option value="Stormsmith">Stormsmith</option>
+<option value="Trencher Commando">Trencher Commando</option>
+<option value="Vassal of Menoth">Vassal of Menoth</option>
+</optgroup>
+<optgroup label="Unleashed Core Rules:">
+<option value="Archer">Archer</option>
+<option value="Blackclad">Blackclad</option>
+<option value="Bloodtracker">Bloodtracker</option>
+<option value="Bloodweaver">Bloodweaver</option>
+<option value="Bokor">Bokor</option>
+<option value="Bone Grinder">Bone Grinder</option>
+<option value="Brigand">Brigand</option>
+<option value="Bushwhacker">Bushwhacker</option>
+<option value="Chieftain">Chieftain</option>
+<option value="Fell Caller">Fell Caller</option>
+<option value="Fennblade">Fennblade</option>
+<option value="Kriel Champion">Kriel Champion</option>
+<option value="Long Rider">Long Rider</option>
+<option value="Mist Speaker">Mist Speaker</option>
+<option value="Monster Hunter">Monster Hunter</option>
+<option value="Priest of Nyssor">Priest of Nyssor</option>
+<option value="Raptor">Raptor</option>
+<option value="Ravager">Ravager</option>
+<option value="Ryssovass">Ryssovass</option>
+<option value="Scout">Scout</option>
+<option value="Shaman (Devourer Wurm)">Shaman (Devourer Wurm)</option>
+<option value="Shaman (Dhunia)">Shaman (Dhunia)</option>
+<option value="Slaughterhouser">Slaughterhouser</option>
+<option value="Sorcerer (Fire)">Sorcerer (Fire)</option>
+<option value="Sorcerer (Ice)">Sorcerer (Ice)</option>
+<option value="Sorcerer (Stone)">Sorcerer (Stone)</option>
+<option value="Sorcerer (Storm)">Sorcerer (Storm)</option>
+<option value="Warlock, Circle">Warlock, Circle</option>
+<option value="Warlock, Farrow">Warlock, Farrow</option>
+<option value="Warlock, Swamp">Warlock, Swamp</option>
+<option value="Warlock, Trollkin">Warlock, Trollkin</option>
+<option value="Warrior">Warrior</option>
+<option value="Wolf Rider">Wolf Rider</option>
+<option value="Wolf of Orboros">Wolf of Orboros</option>
+</optgroup>
+<optgroup label="Wild Adventure:">
+<option value="Berserker">Berserker</option>
+<option value="Blackclad Mist Rider">Blackclad Mist Rider</option>
+<option value="Bloodweaver Night Witch">Bloodweaver Night Witch</option>
+<option value="Croak Conjoined Twin">Croak Conjoined Twin</option>
+<option value="Dhunian Paragon (Fall)">Dhunian Paragon (Fall)</option>
+<option value="Dhunian Paragon (Spring)">Dhunian Paragon (Spring)</option>
+<option value="Dhunian Paragon (Summer)">Dhunian Paragon (Summer)</option>
+<option value="Dhunian Paragon (Winter)">Dhunian Paragon (Winter)</option>
+<option value="Guide">Guide</option>
+<option value="Huntsman">Huntsman</option>
+<option value="Pyg Burrower">Pyg Burrower</option>
+<option value="Skinwalker">Skinwalker</option>
+<option value="Swamp Gobber Raider">Swamp Gobber Raider</option>
+<option value="Tharn Blood Pack">Tharn Blood Pack</option>
+<option value="Tinker">Tinker</option>
+<option value="Trapper">Trapper</option>
+</optgroup>
+<optgroup label="Skorne Empire:">
+<option value="Ascetic">Ascetic</option>
+<option value="Beast Handler">Beast Handler</option>
+<option value="Bloodrunner">Bloodrunner</option>
+<option value="Cataphract">Cataphract</option>
+<option value="Chirurgeon">Chirurgeon</option>
+<option value="Chymist">Chymist</option>
+<option value="Extoller">Extoller</option>
+<option value="Ferox Rider">Ferox Rider</option>
+<option value="Mortitheurge">Mortitheurge</option>
+<option value="Nihilator">Nihilator</option>
+<option value="Praetorian">Praetorian</option>
+<option value="Tormentor">Tormentor</option>
+<option value="Tyrant">Tyrant</option>
+<option value="Venator">Venator</option>
+<option value="Warlock: Skorne">Warlock: Skorne</option>
+</optgroup>
+<optgroup label="Other Publications:">
+<option value="Angler">Angler</option>
+<option value="Blightblade">Blightblade</option>
+<option value="Blighted Sorcerer">Blighted Sorcerer</option>
+<option value="Blighted Swordsman">Blighted Swordsman</option>
+<option value="Buccaneer">Buccaneer</option>
+<option value="Deathstalker">Deathstalker</option>
+<option value="Doom Reaver">Doom Reaver</option>
+<option value="Errant Marine">Errant Marine</option>
+<option value="Exiled Noble">Exiled Noble</option>
+<option value="Flame Bringers">Flame Bringers</option>
+<option value="Greylord Outrider">Greylord Outrider</option>
+<option value="Hex Hunter">Hex Hunter</option>
+<option value="Ice Master">Ice Master</option>
+<option value="Idrian Corsair">Idrian Corsair</option>
+<option value="Ironhead">Ironhead</option>
+<option value="Long Rider">Long Rider</option>
+<option value="Merchant Trader">Merchant Trader</option>
+<option value="Naval Officer">Naval Officer</option>
+<option value="Naval Officer">Naval Officer</option>
+<option value="Nomad">Nomad</option>
+<option value="Press Ganger">Press Ganger</option>
+<option value="Priest of Cyriss">Priest of Cyriss</option>
+<option value="Priest of Cyriss">Priest of Cyriss</option>
+<option value="Raider">Raider</option>
+<option value="Resistance Saboteur">Resistance Saboteur</option>
+<option value="Resistance Sleeper Agent">Resistance Sleeper Agent</option>
+<option value="Rhulic Field Mechanik">Rhulic Field Mechanik</option>
+<option value="Rhulic Warcaster">Rhulic Warcaster</option>
+<option value="Sawbones">Sawbones</option>
+<option value="Sea Sorcerer (Fire)">Sea Sorcerer (Fire)</option>
+<option value="Sea Sorcerer (Ice)">Sea Sorcerer (Ice)</option>
+<option value="Sea Sorcerer (Stone)">Sea Sorcerer (Stone)</option>
+<option value="Sea Sorcerer (Storm)">Sea Sorcerer (Storm)</option>
+<option value="Shepherd">Shepherd</option>
+<option value="Smuggler">Smuggler</option>
+<option value="Tempest Blazer">Tempest Blazer</option>
+<option value="Treasure Hunter">Treasure Hunter</option>
+<option value="Vagabond">Vagabond</option>
+<option value="Warcaster, Cyriss">Warcaster, Cyriss</option>
+<option value="Warlock, Legion">Warlock, Legion</option>
+<option value="Warmonger">Warmonger</option>
+<option value="Watch Inspector">Watch Inspector</option>
+</optgroup></select>
+</h3>
+
+<table class="veteran character-generator-table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody id="career2-data" class="character-generator-data">
+        
+    </tbody>
+</table>
+
+
+<h3>
+    Character Background:
+    <select id="character-background-select">
+        <option value="empty"></option>
+    
+<option value="Civil War Veteran">Civil War Veteran</option>
+<option value="Dragon-Marked">Dragon-Marked</option>
+<option value="Hammer Veteran">Hammer Veteran</option>
+<option value="Lord of Umbrey">Lord of Umbrey</option>
+<option value="Vanquished Soldier">Vanquished Soldier</option></select>
+</h3>
+
+<table class="epic character-generator-table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody id="character-background-data" class="character-generator-data">
+        
+    </tbody>
+</table>
+
+
+<h3>
+    Advancement Points:
+</h3>
+
+<table class="hero character-generator-table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody id="advancement-points-data" class="character-generator-data">
+        <tr>
+            <td><label>Choose 1:</label></td>
+            <td>
+                <select multiple="">
+                    <option class="PHY" data-type="number" value="1">PHY: 1</option>
+                    <option class="SPD" data-type="number" value="1">SPD: 1</option>
+                    <option class="STR" data-type="number" value="1">STR: 1</option>
+                    <option class="AGL" data-type="number" value="1">AGL: 1</option>
+                    <option class="PRW" data-type="number" value="1">PRW: 1</option>
+                    <option class="POI" data-type="number" value="1">POI: 1</option>
+                    <option class="INT" data-type="number" value="1">INT: 1</option>
+                    <option class="ARC" data-type="number" value="1">ARC: 1</option>
+                    <option class="PER" data-type="number" value="1">PER: 1</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Choose 1:</label></td>
+            <td>
+                <select multiple="">
+                    <option class="PHY" data-type="number" value="1">PHY: 1</option>
+                    <option class="SPD" data-type="number" value="1">SPD: 1</option>
+                    <option class="STR" data-type="number" value="1">STR: 1</option>
+                    <option class="AGL" data-type="number" value="1">AGL: 1</option>
+                    <option class="PRW" data-type="number" value="1">PRW: 1</option>
+                    <option class="POI" data-type="number" value="1">POI: 1</option>
+                    <option class="INT" data-type="number" value="1">INT: 1</option>
+                    <option class="ARC" data-type="number" value="1">ARC: 1</option>
+                    <option class="PER" data-type="number" value="1">PER: 1</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Choose 1:</label></td>
+            <td>
+                <select multiple="">
+                    <option class="PHY" data-type="number" value="1">PHY: 1</option>
+                    <option class="SPD" data-type="number" value="1">SPD: 1</option>
+                    <option class="STR" data-type="number" value="1">STR: 1</option>
+                    <option class="AGL" data-type="number" value="1">AGL: 1</option>
+                    <option class="PRW" data-type="number" value="1">PRW: 1</option>
+                    <option class="POI" data-type="number" value="1">POI: 1</option>
+                    <option class="INT" data-type="number" value="1">INT: 1</option>
+                    <option class="ARC" data-type="number" value="1">ARC: 1</option>
+                    <option class="PER" data-type="number" value="1">PER: 1</option>
+                </select>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h3>
+    Adventuring Company:
+    <select id="adventuring-company-select">
+        <option value="empty"></option>
+    
+<optgroup label="Core Rules:">
+<option value="Arcane Order">Arcane Order</option>
+<option value="Intrepid Investigators">Intrepid Investigators</option>
+<option value="Law Dogs">Law Dogs</option>
+<option value="Mercenary Charter">Mercenary Charter</option>
+<option value="Outlaws">Outlaws</option>
+<option value="Pirates of the Broken Cost">Pirates of the Broken Cost</option>
+<option value="Spy Ring">Spy Ring</option>
+</optgroup>
+<optgroup label="Urban Adventure:">
+<option value="Caspian Cortex Smugglers">Caspian Cortex Smugglers</option>
+<option value="Five Fingers Transporters">Five Fingers Transporters</option>
+<option value="Korsk Stanzynat Mustyn">Korsk Stanzynat Mustyn</option>
+<option value="Thamarite Sept">Thamarite Sept</option>
+</optgroup>
+<optgroup label="Kings, Nations, and Gods:">
+<option value="Agents of the Crucible">Agents of the Crucible</option>
+<option value="Crusaders">Crusaders</option>
+<option value="Greylords">Greylords</option>
+<option value="Heroes of the Resistance">Heroes of the Resistance</option>
+<option value="Idrian Tribe">Idrian Tribe</option>
+<option value="Illuminated Ones">Illuminated Ones</option>
+<option value="Khadoran Military Detail">Khadoran Military Detail</option>
+<option value="Nobile Exiles">Nobile Exiles</option>
+<option value="Ordic Naval Expedition">Ordic Naval Expedition</option>
+<option value="Unorthodox Engagement Team">Unorthodox Engagement Team</option>
+</optgroup>
+<optgroup label="Unleashed Core Rules:">
+<option value="Bone Grinder Hunting Party">Bone Grinder Hunting Party</option>
+<option value="Circle Orboros Conclave">Circle Orboros Conclave</option>
+<option value="Farrow Tribe">Farrow Tribe</option>
+<option value="Gatorman Tribe">Gatorman Tribe</option>
+<option value="Northkin Kriel">Northkin Kriel</option>
+<option value="Nyss Refugees">Nyss Refugees</option>
+<option value="Raiders">Raiders</option>
+<option value="Soldiers of Fortune">Soldiers of Fortune</option>
+<option value="Tharn Tuath">Tharn Tuath</option>
+<option value="United Kriels">United Kriels</option>
+<option value="Unlikely Heroes">Unlikely Heroes</option>
+<option value="Wilderness Kriel">Wilderness Kriel</option>
+</optgroup>
+<optgroup label="Skorne Empire:">
+<option value="Army of the Western Reaches">Army of the Western Reaches</option>
+<option value="Beast Hunters">Beast Hunters</option>
+<option value="Bonded Porters">Bonded Porters</option>
+<option value="House Taberna">House Taberna</option>
+<option value="Mystics">Mystics</option>
+<option value="Nomads">Nomads</option>
+<option value="Renegades">Renegades</option>
+</optgroup>
+<optgroup label="Other Publications:">
+<option value="Four Star Syndicate (Dark Dealings)">Four Star Syndicate (Dark Dealings)</option>
+<option value="Four Star Syndicate (High Society)">Four Star Syndicate (High Society)</option>
+<option value="Four Star Syndicate (King's Favor)">Four Star Syndicate (King's Favor)</option>
+<option value="Four Star Syndicate (Mateau Enforcers)">Four Star Syndicate (Mateau Enforcers)</option>
+<option value="Fringe Cultists">Fringe Cultists</option>
+<option value="Khadoran Royal Navy">Khadoran Royal Navy</option>
+<option value="Mateau Traders">Mateau Traders</option>
+<option value="Resistance Saboteurs">Resistance Saboteurs</option>
+<option value="Riverboat Raiders">Riverboat Raiders</option>
+<option value="Seahunters">Seahunters</option>
+<option value="Sleeper Cell">Sleeper Cell</option>
+<option value="The Inner Circle">The Inner Circle</option>
+<option value="The Lost Company">The Lost Company</option>
+<option value="Wilderness Expedition">Wilderness Expedition</option>
+</optgroup></select>
+</h3>
+
+<table class="veteran character-generator-table">
+    <thead>
+        <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody id="adventuring-company-data" class="character-generator-data">
+        
+    </tbody>
+</table>
+
+
+<div><input id="generator-submit" type="submit" value="Generate Character"></div>
+
+
+
+<h2 style="margin-top: 10em;">Future Plans</h2>
+
+<p>
+    The following tables contain features that are planned for the character generator
+    and either will be implemented soonish or did not make it into the current version.
+</p>
+
+<h3>Simple Features</h3>
+
+<table class="hero">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Feature</th>
+            <th>Dependencies</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="features-simple">
+        <tr>
+            <td>S010</td>
+            <td>Add all races, careers, etc.</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S030</td>
+            <td>Fill out Skill Parent Set Value</td>
+            <td>M020</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S040</td>
+            <td>Compute Skill sum</td>
+            <td>S030</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S070</td>
+            <td>Fill Melee Weapon data</td>
+            <td>M050</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S080</td>
+            <td>Fill Ranged Weapon data</td>
+            <td>M060</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S100</td>
+            <td>Fill Languages</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S130</td>
+            <td>Use Skill DB on change of Skill name/value</td>
+            <td>M020</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S140</td>
+            <td>Use Spell DB on change of Spell name</td>
+            <td>M160</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S150</td>
+            <td>Fill out Spell data</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S170</td>
+            <td>Worn Armor Autofill</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S180</td>
+            <td>Melee Weapon Autofill</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S190</td>
+            <td>Ranged Weapon Autofill</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S200</td>
+            <td>Add Benefits to Index</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>S020</td>
+            <td>"overflow" for input fields</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>S050</td>
+            <td>Benefit descriptions and pages</td>
+            <td>M030</td>
+            <td>Pages Done</td>
+        </tr>
+        <tr>
+            <td>S060</td>
+            <td>Ability descriptions and pages</td>
+            <td>M040</td>
+            <td>Pages Done</td>
+        </tr>
+        <tr>
+            <td>S090</td>
+            <td>Fill Arcane Tradition</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>S110</td>
+            <td>Connections descriptions and pages</td>
+            <td>M080</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>S160</td>
+            <td>Add Warcaster Armor/Mechanikal Armor/etc. to Armor DB</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>S170</td>
+            <td>Introduce "Clear Sheet" Button</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Challenging Features</h3>
+
+<table class="veteran">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Feature</th>
+            <th>Dependencies</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="features-challenging">
+        <tr>
+            <td>M090</td>
+            <td>Mechanika DB</td>
+            <td>&nbsp;</td>
+            <td>Canceled</td>
+        </tr>
+        <tr>
+            <td>M020</td>
+            <td>Skill DB</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>M110</td>
+            <td>Capacitor DB</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>M050</td>
+            <td>Melee Weapon DB</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>M060</td>
+            <td>Ranged Weapon DB</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>M160</td>
+            <td>Spell DB</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>M010</td>
+            <td>Armor DB</td>
+            <td>&nbsp;</td>
+            <td>Done for regular armor</td>
+        </tr>
+        <tr>
+            <td>M030</td>
+            <td>Benefit DB</td>
+            <td>S200</td>
+            <td>only all names</td>
+        </tr>
+        <tr>
+            <td>M040</td>
+            <td>Ability DB</td>
+            <td>&nbsp;</td>
+            <td>only all names</td>
+        </tr>
+        <tr>
+            <td>M070</td>
+            <td>Gear DB</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>M080</td>
+            <td>Connections DB</td>
+            <td>M170</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>M100</td>
+            <td>Runeplate DB</td>
+            <td>&nbsp;</td>
+            <td>only all names</td>
+        </tr>
+        <tr>
+            <td>M140</td>
+            <td>Character Portraits</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>M170</td>
+            <td>Add Connections to Index</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>M120</td>
+            <td>Steamjack DB</td>
+            <td>&nbsp;</td>
+            <td>Later</td>
+        </tr>
+        <tr>
+            <td>M130</td>
+            <td>Riding DB</td>
+            <td>&nbsp;</td>
+            <td>Later</td>
+        </tr>
+    </tbody>
+</table>
+    
+<h3>Complex Features</h3>
+
+<table class="epic">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Feature</th>
+            <th>Dependencies</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="features-complex">
+        <tr>
+            <td>C030</td>
+            <td>Mechanika Autofill</td>
+            <td>M090</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>C040</td>
+            <td>Runeplate Autofill</td>
+            <td>M100</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>C050</td>
+            <td>Capacitor Widget</td>
+            <td>M110</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>C010</td>
+            <td>Track Equipment Modifiers</td>
+            <td>M010, M040, M050, M060, M070</td>
+            <td>worn armor/Shield/Command done</td>
+        </tr>
+        <tr>
+            <td>C020</td>
+            <td>compute DEF, ARM, INI, etc.</td>
+            <td>C010</td>
+            <td>Done for basic modifiers</td>
+        </tr>
+        <tr>
+            <td>C110</td>
+            <td>Add Character Cards as alternative design</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>C060</td>
+            <td>Steamjack Widget</td>
+            <td>M120, C090</td>
+            <td>Later</td>
+        </tr>
+        <tr>
+            <td>C070</td>
+            <td>Riding Widget</td>
+            <td>M130, C100</td>
+            <td>Later</td>
+        </tr>
+        <tr>
+            <td>C080</td>
+            <td>Leveling</td>
+            <td>&nbsp;</td>
+            <td>Later</td>
+        </tr>
+        <tr>
+            <td>C090</td>
+            <td>Steamjack Sheet</td>
+            <td>&nbsp;</td>
+            <td>Later</td>
+        </tr>
+        <tr>
+            <td>C100</td>
+            <td>Riding Sheet</td>
+            <td>&nbsp;</td>
+            <td>Later</td>
+        </tr>
+        <tr>
+            <td>C120</td>
+            <td>Chrome sync for local store</td>
+            <td>&nbsp;</td>
+            <td>Later</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Bugs</h3>
+
+<table class="hero">
+    <thead>
+        <tr>
+            <th>Number</th>
+            <th>Feature</th>
+            <th>Dependencies</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="bugs">
+        <tr>
+            <td>B010</td>
+            <td>Some descriptions stay when I generate a new hero.</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>B020</td>
+            <td>Changing font size in mechanika and connections and such.</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>B030</td>
+            <td>Is computed-SPD stored in save()?</td>
+            <td>&nbsp;</td>
+            <td>Done</td>
+        </tr>
+        <tr>
+            <td>B040</td>
+            <td>When the Thrown Weapon Skill is added, missing RAT is not updated.</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+
+</section>
+            <footer id="foot">
+                <div class="banner" style="background-image: url(&quot;static/images/bg-FMF.jpg&quot;);"></div>
+                <p>Images originating from the <a href="http://privateerpress.com">Privateer Press website</a> are © 2001—2016 Privateer Press, Inc. All Rights Reserved. Privateer Press ®, WARMACHINE ®, Cryx, Cygnar, Khador, Protectorate of Menoth, Retribution of Scryah, Steam-powered Miniatures Combat, warcaster, warjack, WARMACHINE: Prime, WARMACHINE: Escalation, WARMACHINE: Apotheosis, WARMACHINE: Superiority, WARMACHINE: Prime Remix, WARMACHINE: Legends, Forces of WARMACHINE: Pirates of the Broken Coast, Forces of WARMACHINE: Retribution of Scyrah, Forces of WARMACHINE: Cygnar, Forces of WARMACHINE: Khador, Forces of WARMACHINE: Cryx, Forces of WARMACHINE: Protectorate of Menoth, HORDES, Circle Orboros, Legion of Everblight, Skorne, Trollbloods, Trollblood, Monsterous Miniatures Combat, warbeast, HORDES: Primal, HORDES: Evolution, HORDES: Metamorphosis, Forces of HORDES: Circle Orboros, Forces of HORDES: Legion of Everblight, Forces of HORDES: Skorne, Forces of HORDES: Trollbloods, Iron Kingdoms, Immoren, The Witchfire Trilogy, Monsternomicon, Five Fingers: The Port of Deceit, Formula P3, Formula P3 Hobby Series, No Quarter Magazine and their logos are trademarks of Privateer Press, Inc. Images and trademarks used without permission. This website is unofficial and is not endorsed by Privateer Press. The background images are taken from the warmachine video game's <a href="http://whitemoondreams.com/warmachine/media/webkit-2">Webkit</a> and the free <a href="http://www.drivethrurpg.com/product/146332/Iron-Kingdoms-Unleashed-An-Introduction-to-Savagery">Iron Kingdoms Unleashed Adventure Kit PDF</a>.</p>
+            </footer>
+        </article><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span><span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+        <!-- <script type="text/javascript">
+            (function(){
+                var webappCache = window.applicationCache;
+                if (webappCache) {
+                    webappCache.addEventListener("updateready", function() { webappCache.update(); webappCache.swapCache(); }, false);
+                }
+            })();
+        </script> -->
+
+        <!-- <script type="text/javascript">
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-64351555-1', 'auto');
+            ga('send', 'pageview');
+        </script> -->
+    
+
+</body></html>

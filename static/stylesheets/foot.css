@@ -1,0 +1,36 @@
+footer#foot {
+    padding-bottom: 0.5em;
+    font-style: italic;
+    clear: both; }
+footer#foot a {
+    color: #3B8DBD; }
+footer#foot > ul,
+footer#foot > ul > li {
+    display: inline; }
+footer#foot > ul > li:after {
+    display: inline-block;
+    margin-left: -3px; }
+footer#foot > ul > li:not(:last-of-type):after {
+    content: ","; }
+footer#foot > ul > li:last-of-type:after {
+    content: "."; }
+footer#foot > p {
+    font-size: 0.8em;
+    text-align: justify; }
+footer#foot > div.banner {
+    display: inline-block;
+    margin-bottom: 1em;
+    width: 100%;
+    height: 24px;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-position: 50% -897px; }
+footer#foot > p:before {
+    margin-bottom: 24px; }
+footer#foot > ul:after {
+    margin-top: 24px; }
+
+@media print {
+    footer#foot {
+        display: none; }
+}

@@ -9,19 +9,19 @@ form#import-export:target { display: block; }
     width: 980px; }
 .fmf.page1 {
     height: 711px;
-    background: url(static/images/sheet/FMF-1.jpeg) no-repeat;
+    background: url(../../images/sheet/FMF-1.jpeg) no-repeat;
     background-size: 980px 711px; }
 .fmf.page2 {
     height: 688px;
-    background: url(static/images/sheet/FMF-2.jpeg) no-repeat;
+    background: url(../../images/sheet/FMF-2.jpeg) no-repeat;
     background-size: 980px 688px; }
 .iku.page1 {
     height: 713px;
-    background: url(static/images/sheet/IKU-1.jpeg) no-repeat;
+    background: url(../../images/sheet/IKU-1.jpeg) no-repeat;
     background-size: 980px 713px; }
 .iku.page2 {
     height: 689px;
-    background: url(static/images/sheet/IKU-2.jpeg) no-repeat;
+    background: url(../../images/sheet/IKU-2.jpeg) no-repeat;
     background-size: 980px 689px; }
 .character-sheet input { position: absolute; font-size: 13px; padding: 2px 1px; font-family: Arial; border: 0; background-color: transparent; }
 .character-sheet textarea { position: absolute; font-size: 10px; padding: 1px 0 0 0; line-height: 0.9; resize: none; border: 0; background-color: transparent; }

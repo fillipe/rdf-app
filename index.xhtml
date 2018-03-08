@@ -17,7 +17,11 @@
 		    var f = evt.target.files[0]; 
 
 		    var result = csvFileToJSON(f);
-    		document.getElementById('printJsonHere').innerHTML = result;
+
+		    result.then(function(json) {
+		    	document.getElementById('printJsonHere').innerHTML = json;
+		    });
+
 		}
 
 		document.getElementById('csvFile').addEventListener('change', readSingleFile, false);

@@ -16,8 +16,8 @@ function csvJSON(csv){
     result.push(obj);
   });
 
-  return result; //JavaScript object
-  //return JSON.stringify(result); //JSON
+  //return result; //JavaScript object
+  return JSON.stringify(result); //JSON
 }
 
 // ref: http://stackoverflow.com/a/1293163/2343
@@ -129,7 +129,8 @@ function csvFileToJSON(file) {
     // Closure to capture the file information.
     reader.onload = function() {
       var text = reader.result;
-      resolve(CSVToArray(text));
+      //resolve(CSVToArray(text));
+      resolve(csvJSON(text));
     };
 
     // Read in the image file as a data URL.

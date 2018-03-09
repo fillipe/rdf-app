@@ -21,10 +21,6 @@
             var db = new PouchDB('ikrpg');
         </script> -->
 
-        <script type="text/javascript" src="static/javascripts/index.js"></script>
-        <script type="text/javascript" src="static/javascripts/heroic.js"></script>
-        <script type="text/javascript" src="static/javascripts/sheet.js"></script>
-        <script type="text/javascript" src="static/javascripts/generator.js"></script>
     </head>
     <body style="background-image: url(&quot;static/images/bg-FMF.jpg&quot;); background-position: 50% -370px;">
         <!-- <script type="text/javascript">
@@ -1922,6 +1918,9 @@
             ga('create', 'UA-64351555-1', 'auto');
             ga('send', 'pageview');
         </script> -->
-    
+        <script type="text/javascript" src="static/javascripts/index.js"></script>
+        <script type="text/javascript" src="static/javascripts/heroic.js"></script>
+        <script type="text/javascript" src="static/javascripts/sheet.js"></script>
+        <script type="text/javascript" src="static/javascripts/generator.js"></script>
 
 </body></html>

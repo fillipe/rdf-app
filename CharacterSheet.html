@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>IKRPG Sheet</title>
+        <title>Gerador de Ficha Reduto do Bucaneiro</title>
         <meta name="description" content="Unofficial Iron Kingdoms Role Playing Game (IKRPG) Resources: IKRPG content index and character sheets.">
         <link rel="stylesheet" href="static/stylesheets/index.css">
         <link rel="stylesheet" href="static/stylesheets/content/datatables.css">
@@ -59,20 +59,9 @@
             });
         </script> -->
         <article itemscope="" itemtype="http://schema.org/Article">
-            <nav id="menu">
-                <ol>
-                    <li><a href="/"></a></li>
-                    <li><a href="mailto:philipp.wille@web.de"></a></li>
-                    <li><a href="https://github.com/ikrpg/ikrpg.github.io/wiki/How-do-I-Participate%3F"></a></li>
-                    <li><a href="https://github.com/ikrpg/ikrpg.github.io"></a></li>
-                    <li><a href="http://prose.io/#ikrpg/ikrpg.github.io/edit/master/_posts/0000-01-01-Character-Generator.html"></a></li>
-                    <li><a href="#" class="js-resizable"></a></li>
-                    <li><a href="#" class="js-opaquable"></a></li>
-                    <li><a href="#" class="js-expandable"></a></li>
-                </ol>
-            </nav>
             <header id="head" style="background-image: url(&quot;static/images/bg-FMF.jpg&quot;); background-position: 50% -436px;">
-                <h1 itemprop="headline">Character Generator</h1>
+                <h1 itemprop="headline">Gerador de Ficha</h1>
+                <h1 itemprop="headline">Rafão Bicha S2</h1>
                 <nav>
                     <ol>
                     
@@ -85,33 +74,21 @@
 
 
 <p>
-    These are the (slightly modified) official Full Metal Fantasy and Unleashed character sheets
-    that can be downloaded at <a href="http://privateerpress.com/iron-kingdoms/downloads">privateerpress.com</a>.
-    We have modified them so you can fill, print, and save them in your browser!
-    After you saved them they are only visible to you.
-    We do not have access to your characters.
-    Only you can access them and only in the browser you saved them in.
+    Olá jogador tupiniquim, essa é uma versão alpha de gerador de ficha dinâmica baseado no site <a href="https://ikrpg.info/Character-Generator/">ikrpg.info</a> que está sendo feito pela equipe do <a href="https://redutodobucaneiro.wordpress.com/">Reduto do Bucaneiro</a>. Nós estamos a todo o vapor para que nós aqui do Brasil tenhamos cada vez mais conteúdo em português deste cenário que amamos tanto.
 </p>
 <p>
-    <strong>Beware:</strong>
-    If you <strong>clear your browser cache</strong>, your character sheets <strong>will be lost</strong>!
-    Additionally, if you <strong>save</strong> a new character sheet <strong>under an existing hero name</strong>, the old sheet <strong>will be lost</strong>!
+    <em>Dica:</em>
+    Use a função de imprimir do seu browser para gerar o pdf dessa ficha!
 </p>
+
 <p>
-    <em>Tip:</em>
-    Use your browser's print function to print your character sheet!
-</p>
-<p>
-    You can import/export character cards should you need them in a different browser, clear your browser cache or email them to a friend.
-    Exporting cards will give you a gibberish representation of your character that you can copy.
-    Pasting that gibberish into the import/export field and clicking to import the character will update your sheet.
-    Have fun using the character sheets!
+    VIDA LONGA AO REDUTO!
 </p>
 
 
 <h2 style="font-weight:300;margin:1em 0 2em 0;">
-    | <a href="javascript:ikrpg.sheet.saveHero();">Save</a> |
-    <a href="#import-export">Import/Export Character</a> |
+    | <a href="javascript:ikrpg.sheet.saveHero();">Salvar</a> |
+    <a href="#import-export">Importar/Exportar Personagem</a> |
 </h2>
 
 <form id="import-export">
@@ -125,23 +102,26 @@
     <table id="characters" class="hero">
         <thead>
             <tr>
-                <th>Hero Name</th>
-                <th>Archetype</th>
-                <th>Race</th>
-                <th>Careers</th>
+                <th>Nome do Heroi</th>
+                <th>Arquetipo</th>
+                <th>Raça</th>
+                <th>Carreira</th>
                 <th>Load</th>
                 <th>Delete</th>
             </tr>
         </thead>
         
-    <tbody><tr><td>Eldjárn</td><td>Mighty</td><td>Trollkin</td><td>Warrior</td><td><a href="javascript:ikrpg.sheet.showCharacter('Eldjárn')">Load</a></td><td><a href="javascript:ikrpg.sheet.deleteCharacter('Eldjárn', '2-7d8e60c3dac9577000822f9fc126c507')"><strong>Delete</strong></a></td></tr><tr><td>Shido "Lobo de Sangue"</td><td>Mighty</td><td>Human</td><td>Skinwalker, Berserker</td><td><a href="javascript:ikrpg.sheet.showCharacter('Shido Lobo de Sangue')">Load</a></td><td><a href="javascript:ikrpg.sheet.deleteCharacter('Shido Lobo de Sangue', '8-b038802f617e406a757d6cf3577928ee')"><strong>Delete</strong></a></td></tr><tr><td>Skaldi</td><td>Mighty</td><td>Trollkin</td><td>Kriel Champion, Warrior</td><td><a href="javascript:ikrpg.sheet.showCharacter('Skaldi')">Load</a></td><td><a href="javascript:ikrpg.sheet.deleteCharacter('Skaldi', '1-2d213ce0d8b210e557ddd24d4c3ba9db')"><strong>Delete</strong></a></td></tr><tr><td>Vtr Snapshot</td><td>Skilled</td><td>Human</td><td>Ranger, Spy</td><td><a href="javascript:ikrpg.sheet.showCharacter('Vtr Snapshot')">Load</a></td><td><a href="javascript:ikrpg.sheet.deleteCharacter('Vtr Snapshot', '1-0b6479cb85c0c45126a4a9db02dd126c')"><strong>Delete</strong></a></td></tr></tbody></table>
+        <tbody>
+            
+        </tbody>
+    </table>
 </div>
 
 
 <div style="margin-top:4em;">
-    <strong>Choose your character sheet design:</strong>
+    <strong>Escolha o estilo da sua ficha:</strong>
     <ul style="list-style-type:disc;">
-        <li><a id="FMF-bg" href='javascript:$(".character-sheet.iku").removeClass("iku").addClass("fmf");'>Full Metal Fantasy</a> (slightly modified)</li>
+        <li><a id="FMF-bg" href='javascript:$(".character-sheet.iku").removeClass("iku").addClass("fmf");'>Full Metal Fantasy</a> (um pouco modificada)</li>
         <li><a id="IKU-bg" href='javascript:$(".character-sheet.fmf").removeClass("fmf").addClass("iku");'>Unleashed</a></li>
     </ul>
 </div>

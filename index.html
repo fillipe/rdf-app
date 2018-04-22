@@ -3,14 +3,62 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<title>RDF App</title>
-	<script type="text/javascript" src="js/csv-to-json.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="static/javascripts/csv-to-json.js"></script>
+
 </head>
 <body>
-	<input type="file" id="csvFile"/>
 
-	<p id="printJsonHere"></p>
+	<input type="button" onclick="testReadFromFirebase()" value="teste read" />
+	<label for="abilityNameId">Nome</label><input id="abilityNameId" type="text" />
+	<br><br>
+
+	<input type="button" onclick="testWriteIntoFirebase()" value="teste write" /><br>
+	<label for="abilityName">Nome</label><input id="abilityName" type="text" /><br>
+	<label for="abilityPreReq">Pre-Requisitos</label><input id="abilityPreReq" type="text" /><br>
+	<label for="abilityRule">Regra</label><textarea id="abilityRule" rows="5" cols="50"></textarea>
+	<br><br>
+
+	<input type="file" id="csvFile" /><br>
+	<p id='printJsonHere'></p>
+
+
+	<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyBnES2vqQqDgvhMLgaNUROriMyGgiwsO1U",
+	    authDomain: "rdfapp-character-sheet.firebaseapp.com",
+	    databaseURL: "https://rdfapp-character-sheet.firebaseio.com",
+	    projectId: "rdfapp-character-sheet",
+	    storageBucket: "rdfapp-character-sheet.appspot.com",
+	    messagingSenderId: "911354633849"
+	  };
+	  firebase.initializeApp(config);
+	</script>
 	
 	<script>
+
+		function testWriteIntoFirebase() {
+			var ability = {
+				name: $('#abilityName').val(),
+				prerequisite: $('#abilityPreReq').val(),
+				rule: $('#abilityRule').val()
+			}
+
+			firebase.database().ref('abilities/' + ability.name).set(ability);
+		}
+
+		function testReadFromFirebase() {
+			firebase.database().ref('/abilities/' + $('#abilityNameId').val()).once('value').then(
+				function(snapshot) {
+					$('#abilityName').val(snapshot.val().name);
+					$('#abilityPreReq').val(snapshot.val().prerequisite);
+					$('#abilityRule').val(snapshot.val().rule);
+				}
+			);
+		}
 
 		function readSingleFile(evt) {
 	    	//Retrieve the first (and only!) File from the FileList object
